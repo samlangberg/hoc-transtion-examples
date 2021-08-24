@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "redux";
 
 import React from "react";
 
-const ExampleConnectReduxHooks = (): JSX.Element => {
+const ExampleReduxHooks = (): JSX.Element => {
   const { filterTerm } = useSelector(
     ({
       viewConfiguration: {
@@ -21,4 +21,4 @@ const ExampleConnectReduxHooks = (): JSX.Element => {
   );
 };
 
-export default ExampleConnect;
+export default ExampleReduxHooks;

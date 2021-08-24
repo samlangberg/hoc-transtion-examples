@@ -12,7 +12,7 @@ type Props = {
 };
 
 const BranchExample = ({ queryData, isLoading }: Props) => {
-  return <List data={queryData} isLoading={isLoading} />;
+  return <List data={queryData} />;
 };
 
 export default compose(

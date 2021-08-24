@@ -1,9 +1,9 @@
 import List from "./List";
-import Loader from "./List";
+import Loader from "./Loader";
 import React from "react";
-import withExampleQuery from "./withExampleQuery";
+import useExampleQueryHook from "./useExampleQueryHook";
 
-const UseQueryHookConsumer = (): JSX.Element | null => {
+const FunctionalReturnExample = (): JSX.Element | null => {
   const { queryData, isLoading } = useExampleQueryHook();
   if (!queryData && !isLoading) {
     return null;
@@ -12,7 +12,7 @@ const UseQueryHookConsumer = (): JSX.Element | null => {
     return <Loader />;
   }
 
-  return <List data={queryData} isLoading={isLoading} />;
+  return <List data={queryData} />;
 };
 
-export default UseQueryHookConsumer;
+export default FunctionalReturnExample;
