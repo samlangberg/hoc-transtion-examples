@@ -4,7 +4,7 @@ import itemsSelector from "./itemsSelector";
 
 type Props = {
   items: Array<Item>;
-  selectedIds: Array<Item>;
+  selectedIds: Array<string>;
 };
 
 const WithReselectExample = (props: Props) => {

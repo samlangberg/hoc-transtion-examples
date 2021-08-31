@@ -1,25 +1,29 @@
-import type { List } from "immutable";
 import React from "react";
 import compose from "recompose/compose";
 import { connect } from "react-redux";
-import { is } from "immutable";
 
 type State = {
-  filters: List<string>;
+  filters: Array<{ id: string; active: boolean }>;
 };
 
 type Props = {
-  filters: List<string>;
+  filters: Array<{ id: string; active: boolean }>;
 };
 
 const ExampleCustomEqualityReduxHOC = ({ filters }: Props): JSX.Element => {
-  return <div>{filters.size} Total Filters</div>;
+  return <div>{filters.length} Active Filters</div>;
 };
 
-const mapStateToProps = ({ filters }) => filters;
+const mapStateToProps = ({ filters }) => filters.filter(({ active }) => active);
 
-const areStatesEqual = (previousState, state) =>
-  is(previousState.list, state.list);
+const areStatesEqual = (
+  { filters: prevList }: State,
+  { filters: currentList }: State
+) => {
+  const current = currentList.map(({ id }) => id);
+  const prev = prevList.map(({ id }) => id);
+  return current.every((id) => prev.includes(id));
+};
 
 export default compose(
   connect<any, any, _, _, _, _>(mapStateToProps, undefined, {
